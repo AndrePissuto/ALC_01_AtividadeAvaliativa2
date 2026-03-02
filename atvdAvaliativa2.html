@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade avaliativa</title>
+</head>
+<body>
+
+    Insira a distancia da corrida em km: <input type="number" name="" id="inp_km">
+    <br>
+    Insira o valor do pedagio: <input type="number" name="" id="inp_pedagio">
+    <br>
+    Informe a bandeira: <input type="number" name="" id="inp_bandeira">
+    <br>
+    <button onclick="acumular()">Acumular corrida realizada</button>
+    <br>
+    <p id="out_taxi"></p>
+    
+</body>
+</html>
+
+<script>
+
+    let contagem = 0;
+    let acumulo = 0;
+    function acumular(){
+        let km = Number(inp_km.value)
+        let pedagio = Number(inp_pedagio.value)
+        let bandeira = Number(inp_bandeira.value)
+        let valorCorrida = 0
+        contagem += 1 
+
+        valorCorrida = (km / 8 * 10).toFixed(2)
+
+        if(km > 50){
+            valorCorrida -= valorCorrida * 0.1
+        }
+
+        if(bandeira == 1){
+            valorCorrida -= valorCorrida * 0.0335
+        }
+        if(bandeira == 2){
+            valorCorrida += valorCorrida * 0.115
+        }
+        if(bandeira == 3){
+            valorCorrida += valorCorrida * 0.225
+        }
+
+        out_taxi.innerHTML += `${contagem}ª corrida de ${km} km com valor de R$ ${valorCorrida} – ACUMULADO DO DIA R$ ${acumulo} <br>`
+    }
+</script>
