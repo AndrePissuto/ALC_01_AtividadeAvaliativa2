@@ -29,24 +29,27 @@
         let pedagio = Number(inp_pedagio.value)
         let bandeira = Number(inp_bandeira.value)
         let valorCorrida = 0
-        contagem += 1 
+        contagem = contagem + 1 
 
-        valorCorrida = (km / 8 * 10).toFixed(2)
+        valorCorrida = (km / 8) * 10
+        valorCorrida = valorCorrida + pedagio
 
         if(km > 50){
-            valorCorrida -= valorCorrida * 0.1
+            valorCorrida = valorCorrida - valorCorrida * 0.1
         }
 
         if(bandeira == 1){
-            valorCorrida -= valorCorrida * 0.0335
+            valorCorrida = valorCorrida - valorCorrida * 0.0335
         }
         if(bandeira == 2){
-            valorCorrida += valorCorrida * 0.115
+            valorCorrida = valorCorrida + valorCorrida * 0.115
         }
         if(bandeira == 3){
-            valorCorrida += valorCorrida * 0.225
+            valorCorrida = valorCorrida + valorCorrida * 0.225
         }
 
-        out_taxi.innerHTML += `${contagem}ª corrida de ${km} km com valor de R$ ${valorCorrida} – ACUMULADO DO DIA R$ ${acumulo} <br>`
+        acumulo = acumulo + valorCorrida
+
+        out_taxi.innerHTML += `${contagem}ª corrida de ${km} km com valor de R$ ${valorCorrida.toFixed(2)} – ACUMULADO DO DIA R$ ${acumulo.toFixed(2)} <br>`
     }
 </script>
